@@ -99,8 +99,13 @@ jobs:
 
       - name: Azure Login (Service Principal)
         uses: azure/login@v2
+     
+        # ------------------------------------
+        # ------- !!!!!!انتبهوا هنا ----------
         with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+          # Check the naming of your CREDENTIALS secrets and change it
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+        # ------------------------------------
 
       - name: Upload deployment package artifact
         uses: actions/upload-artifact@v4.6.2
