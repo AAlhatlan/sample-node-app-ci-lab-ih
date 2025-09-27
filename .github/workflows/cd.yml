@@ -97,14 +97,10 @@ jobs:
           (cd "$GITHUB_WORKSPACE" && zip -r "$ZIP_NAME" "deployment-package")
           echo "ZIP_NAME=$ZIP_NAME" >> "$GITHUB_ENV"
 
-      - name: Azure login (client secret)
+      - name: Azure Login (Service Principal)
         uses: azure/login@v2
-        # ------------------------------------
-        # ------- !!!!!!انتبهوا هنا ----------
         with:
-          # Check the naming of your CREDENTIALS secrets and change it
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-        # ------------------------------------
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Upload deployment package artifact
         uses: actions/upload-artifact@v4.6.2
